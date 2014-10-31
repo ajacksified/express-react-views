@@ -33,7 +33,7 @@ function createEngine(engineOptions) {
   function renderFile(filename, options, cb) {
     try {
       var markup = engineOptions.doctype;
-      var component = require(filename);
+      var component = React.createFactory(require(filename));
       // Transpiled ES6 may export components as { default: Component }
       component = component.default || component;
       markup += React.renderComponentToStaticMarkup(component(options));
